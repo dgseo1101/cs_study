@@ -69,7 +69,6 @@ print(slow_function.__closure__) # (<cell at 0x000001B8F17577C0: function object
 print(slow_function.__closure__[0].cell_contents) # <function slow_function at 0x000001B8F177BF60>
 
 # case 5
-
 funcs = []
 
 for i in range(3):
@@ -82,3 +81,19 @@ for i in range(3):
 funcs[0]()  # 2
 funcs[1]()  # 2
 funcs[2]()  # 2
+
+# case 6
+class Counter:
+    def __init__(self):
+        self.count = 0
+
+    def inc(self):
+        self.count += 1
+        return self.count
+
+c1 = Counter()
+c2 = Counter()
+
+print(c1.inc())  # 1
+print(c1.inc())  # 2
+print(c2.inc())  # 1
